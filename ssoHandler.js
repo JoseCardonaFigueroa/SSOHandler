@@ -152,7 +152,7 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
         debugger;
         //this.callLoginValidation('adjflasjd','añlksdfjsaldfjsa',jwtSso);
         var authHeader = 'Bearer '+jwtSso;
-        var body = '{"communicatorName":"SFDCWebSock","httpContact":"http://192.168.1.128:9991/EventListner	","applicationId":"Salesforce.com"}';
+        var body = '{\"communicatorName\":\"SFDCWebSock\",\"httpContact\":\"http://192.168.1.128:9991/EventListner\",\"applicationId\":\"Salesforce.com\"}';
         $.ajax({
             method: 'POST',
             url: this.cti_gw + '/event/login',
