@@ -156,9 +156,12 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
         $.ajax({
             method: 'POST',
             url: this.cti_gw + '/event/login',
+            contentType: 'application/json',
             header: {
                 'Authorization' : authHeader,
-                'ContentType' : 'application/json'
+                'accepts': 'application/json',
+                'cache-control' : 'no-cache',
+                'content-type' : 'application/json'
             },
             success: function (result, status, xhr) {
                 console.log(result);
