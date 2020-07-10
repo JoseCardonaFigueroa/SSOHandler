@@ -167,7 +167,10 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
             success: function (result, status, xhr) {
                 console.log(result);
                 debugger;
-                nextiva_token = result.nextivaUserToken;
+                if(result.code == 1){
+                    console.error("User not able to auth in CTI", result.msg)
+                }
+                nextiva_token = result.authToken;
                 nextiva_username = result.nextivaUserName;
                 nextiva_password = result.nextivaUserPwd;
 
@@ -181,7 +184,7 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
             error: function (xhr, status, error) {
                 console.error(error);
                 console.error(status);
-                $(".text-error").text(result.errorMsg).show();
+                $(".text-error").text(error).show();
                 console.log(result.errorMsg);
                 $('#sso-sing-in').attr('disabled', 'false');
             }
