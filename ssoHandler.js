@@ -9,7 +9,7 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
     this.authorize_endpoint = authorize_endpoint;
     this.code_challenge = '';
     this.code_verifier = '';
-    this.cti_gw = cti_gw;
+    this.cti_gw = 'https://cti.nextiva.com/ctigw/v1';
     /**
      * Allow to generate a URL safe code_verifier which is a requirement of the PKCE
      */
