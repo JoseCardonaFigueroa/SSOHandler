@@ -157,6 +157,7 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
             method: 'POST',
             url: this.cti_gw + '/event/login',
             contentType: 'application/json',
+            data: body,
             header: {
                 'Authorization' : authHeader,
                 'accepts': 'application/json',
