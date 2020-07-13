@@ -164,6 +164,11 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
                 'cache-control' : 'no-cache',
                 'content-type' : 'application/json'
             },
+            beforeSend: function (xhr) {
+                /* Authorization header */
+                xhr.setRequestHeader("Authorization", authHeader);
+                xhr.setRequestHeader("X-Mobile", "false");
+            },
             success: function (result, status, xhr) {
                 console.log(result);
                 debugger;
