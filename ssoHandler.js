@@ -3,7 +3,7 @@
  */
 function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_endpoint, cti_gw) {
     this.client_id = client_id;
-    this.idp_id = '0oa2s7bkj5ODWeBMK357';
+    this.idp_id = '0oa3mg917lPHbPx8r357';
     this.redirect_uri = encodeURI(redirect_uri);
     this.token_endpoint = token_endpoint;
     this.authorize_endpoint = authorize_endpoint;
