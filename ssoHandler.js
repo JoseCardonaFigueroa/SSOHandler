@@ -150,6 +150,7 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
      */
     this.bwAuth = function(jwtSso){
         debugger;
+        nextiva_username = this.parseJwt(jwtSso)["com.nextiva.ident.voice.pid"];
         //this.callLoginValidation('adjflasjd','añlksdfjsaldfjsa',jwtSso);
         var authHeader = 'Bearer '+jwtSso;
         var body = '{\"communicatorName\":\"SFDCWebSock\",\"httpContact\":\"http://192.168.1.128:9991/EventListner\",\"applicationId\":\"Salesforce.com\"}';
@@ -176,7 +177,7 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
                     console.error("User not able to auth in CTI", result.msg)
                 }
                 nextiva_token = result.authToken;
-                nextiva_username = result.nextivaUserName;
+                //nextiva_username = result.nextivaUserName;
                 nextiva_password = result.nextivaUserPwd;
 
                 localStorage.setItem("userName", nextiva_username);
@@ -196,7 +197,15 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
             }
         });
     };
+    this.parseJwt (token) {
+        var base64Url = token.split('.')[1];
+        var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
 
+        return JSON.parse(jsonPayload);
+    };
     this.callLoginValidation = function(username, pwd, oktaToken){
         $(document).ready(function () {
             // Calls controller method userLogin
