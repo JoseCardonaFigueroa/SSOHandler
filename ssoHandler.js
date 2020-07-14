@@ -9,7 +9,7 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
     this.authorize_endpoint = authorize_endpoint;
     this.code_challenge = '';
     this.code_verifier = '';
-    this.cti_gw = 'https://cti.nextiva.com/ctigw/v1';
+    this.cti_gw = cti_gw;
     /**
      * Allow to generate a URL safe code_verifier which is a requirement of the PKCE
      */
@@ -183,7 +183,7 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
                 localStorage.setItem("authToken", nextiva_token);
                 localStorage.setItem("userPwd", nextiva_password);
                 localStorage.setItem("nextivaUserId", result.nextivaUserName);
-                document.cookie = "nextivaUserToken="+result.nextivaUserToken;
+                document.cookie = "nextivaUserToken="+result.authToken;
                 $('#sso-sing-in').attr('disabled', 'false');
             },
             error: function (xhr, status, error) {
