@@ -171,6 +171,11 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
                 xhr.setRequestHeader("X-Mobile", "false");
             },
             success: function (result, status, xhr) {
+                debugger;
+                var phoneState = new SoftPhoneState();
+                console.log("clearing localStorage");
+                phoneState.putOnHook();
+                phoneState.write();
                 console.log(result);
                 debugger;
                 if(result.code == 1){
