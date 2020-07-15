@@ -191,6 +191,7 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
                 localStorage.setItem("nextivaUserId", result.nextivaUserName);
                 document.cookie = "nextivaUserToken="+result.authToken;
                 $('#sso-sing-in').attr('disabled', 'false');
+                debugger;
                 showDialer(true);
             },
             error: function (xhr, status, error) {
