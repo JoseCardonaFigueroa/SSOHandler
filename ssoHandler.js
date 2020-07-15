@@ -193,22 +193,6 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
                 $('#sso-sing-in').attr('disabled', 'false');
                 debugger;
                 showDialer(true);
-                debugger;
-
-                    console.log(nextiva_token);
-                            
-                nextiva_gatewayurl = '{!$Label.GatewayEndPoint}';
-                nextiva_websockurl = '{!$Label.Websocketendpoint}';
-
-                localStorage.setItem("gatewayUrl", nextiva_gatewayurl);
-                localStorage.setItem("websockUrl", nextiva_websockurl);
-
-                salesforce_session = '{!$Api.Session_ID}';
-                salesforce_userid = '{!$User.Id}';
-                uiMode = '{!$CurrentPage.parameters.mode}';
-                isMyDomianEnabled = window.location.hostname.includes('--');
-
-                createAdapter();
             },
             error: function (xhr, status, error) {
                 console.error(error);
