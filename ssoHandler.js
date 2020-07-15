@@ -150,7 +150,7 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
      */
     this.bwAuth = function(jwtSso){
         debugger;
-        nextiva_username = this.parseJwt(jwtSso)["com.nextiva.ident.voice.pid"];
+        nextiva_username = this.parseJwt(jwtSso)["com.nextiva.ident.voice.pid"] +"@nextiva.com";
         //this.callLoginValidation('adjflasjd','añlksdfjsaldfjsa',jwtSso);
         var authHeader = 'Bearer '+jwtSso;
         var body = '{\"communicatorName\":\"SFDCWebSock\",\"httpContact\":\"http://192.168.1.128:9991/EventListner\",\"applicationId\":\"Salesforce.com\"}';
