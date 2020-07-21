@@ -212,7 +212,7 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
 
         return JSON.parse(jsonPayload);
     };
-    this.callLoginValidation = function(username, pwd, oktaToken){
+    /*this.callLoginValidation = function(username, pwd, oktaToken){
         $(document).ready(function () {
             // Calls controller method userLogin
             debugger;
@@ -239,7 +239,7 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
                 }
                 $('#sso-sing-in').attr('disabled', 'false');
             });
-    });
+    });*/
 
     }
 }
