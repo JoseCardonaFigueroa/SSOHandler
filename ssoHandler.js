@@ -195,9 +195,12 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
                 localStorage.setItem("authToken", nextiva_token);
                 localStorage.setItem("userPwd", nextiva_password);
                 localStorage.setItem("nextivaUserId", result.nextivaUserName);
+                localStorage.setItem("isUserLoggedIn", true);
+                phoneState.isUserLoggedIn = true;
                 document.cookie = "nextivaUserToken="+result.authToken;
                 $('#sso-sing-in').attr('disabled', 'false');
                 debugger;
+                phoneState.write();
                 showDialer(true);
             },
             error: function (xhr, status, error) {
