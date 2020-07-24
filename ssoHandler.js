@@ -238,7 +238,10 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
                     localStorage.setItem("userPwd", nextiva_password);
                     localStorage.setItem("nextivaUserId", result.nextivaUserName);
                 document.cookie = "nextivaUserToken="+result.nextivaUserToken;
-                
+                saveCredentials(nextiva_username, nextiva_password, true, function(result, event) {
+                    debugger;
+                            console.debug('save credentials called'); 
+                            });
                 showDialer(true);
                 // var popupWindow = window.open('https://productintegrations-dev-dev-ed--nextiva.visualforce.com/apex/TestWebSocketConnection','popUpWindow','height=300,width=700,left=50,top=50,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no, status=yes');
                 } else {
