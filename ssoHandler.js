@@ -48,7 +48,7 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
         "&code_challenge=" +
         this.code_challenge +
         "&idp="+this.idp_id+"&code_challenge_method=S256";
-        //window.top.location.href = url;
+        window.location.href = url;
     };
     /**
      * This method encodes a string into base 64 url safe
