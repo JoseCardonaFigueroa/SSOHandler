@@ -138,7 +138,7 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
         setTimeout(function(){
             if (code == undefined) {
                 localStorage.setItem('jwtTokenSso', '');
-
+                debugger;
                 this.submit();
             } else if(jwtSso == '' || jwtSso == undefined) {
 
