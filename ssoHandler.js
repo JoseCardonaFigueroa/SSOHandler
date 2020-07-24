@@ -135,7 +135,7 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
         
         console.log(jwtSso);
 
-        setTimeout(function(){
+        //setTimeout(function(){
             if (code == undefined) {
                 localStorage.setItem('jwtTokenSso', '');
                 debugger;
@@ -145,7 +145,7 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
                 this.getToken(code);
 
             } 
-        },5000);
+        //},5000);
 
     };
 
