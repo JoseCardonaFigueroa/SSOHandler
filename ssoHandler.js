@@ -145,7 +145,7 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
                 this.getToken(code);
 
             } 
-        },300);
+        },30000);
 
     };
 
