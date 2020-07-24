@@ -135,15 +135,17 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
         
         console.log(jwtSso);
 
-        if (code == undefined) {
-            localStorage.setItem('jwtTokenSso', '');
-            
-            this.submit();
-        } else if(jwtSso == '' || jwtSso == undefined) {
-                
-            this.getToken(code);
+        setTimeout(function(){
+            if (code == undefined) {
+                localStorage.setItem('jwtTokenSso', '');
 
-        } 
+                this.submit();
+            } else if(jwtSso == '' || jwtSso == undefined) {
+
+                this.getToken(code);
+
+            } 
+        },300);
 
     };
 
