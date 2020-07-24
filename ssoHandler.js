@@ -85,6 +85,7 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
         $.ajax({
             method: 'POST',
             url : url+'?'+params,
+            cache: false,
             context : this,
             data: params,
             headers: {
@@ -104,7 +105,8 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
                 if(jqXHR.status == 400){
                     this.submit();
                 }
-            }
+            },
+            async: false
         });
     }
 
@@ -159,6 +161,8 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
             url: this.cti_gw + '/event/login',
             contentType: 'application/json',
             data: body,
+            cache: false,
+            async: false,
             header: {
                 'Authorization' : authHeader,
                 'accepts': 'application/json',
