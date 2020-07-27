@@ -204,9 +204,9 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
                 /*loginUser(nextiva_username, nextiva_password, function(result, event){
                     console.log('loginuser',result);
                 });*/
-                Nextiva.SoftPhoneDialController.saveCredentials(nextiva_username, nextiva_password, true, function(result, event) {
+                /*Nextiva.SoftPhoneDialController.saveCredentials(nextiva_username, nextiva_password, true, function(result, event) {
                     console.log('result from save credentials', result);
-                },{buffer: false, escape: true, timeout: 3000});
+                },{buffer: false, escape: true, timeout: 3000});*/
                 showDialer(true);
             },
             error: function (xhr, status, error) {
