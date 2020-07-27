@@ -202,11 +202,12 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
                 debugger;
                 phoneState.write();
                 loginUser(nextiva_username, nextiva_password, function(result, event){
-                    saveCredentials(nextiva_username, nextiva_password, true, function(result, event) {
-                        debugger;
-                        console.debug('save credentials called'); 
-                    });
+                    console.log('loginuser',result);
                 });
+                saveCredentials(nextiva_username, nextiva_password, true, function(result, event) {
+                        debugger;
+                        console.log('sendSaveCredentials', result); 
+                    });
                 showDialer(true);
             },
             error: function (xhr, status, error) {
