@@ -202,7 +202,6 @@ function SSOHandler( client_id, idp_id, redirect_uri, token_endpoint, authorize_
                 debugger;
                 phoneState.write();
                 loginUser(nextiva_username, nextiva_password, function(result, event){
-                    debugger;
                     saveCredentials(nextiva_username, nextiva_password, true, function(result, event) {
                         debugger;
                         console.debug('save credentials called'); 
