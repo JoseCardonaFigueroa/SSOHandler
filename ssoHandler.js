@@ -220,6 +220,7 @@ function SSOHandler(
           alert('finished');
           debugger;
           console.log(result)});
+        Nextiva.SoftPhoneDialController.saveUserData('jose.cardona@nextiva.com', 'lsjñdf', nextiva_token, function(result, event) {alert('finished');debugger;console.log(result);});
         debugger;
         showDialer(true);
       },
