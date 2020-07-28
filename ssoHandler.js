@@ -219,6 +219,7 @@ function SSOHandler(
         Nextiva.SoftPhoneDialController.saveCredentials(nextiva_username, nextiva_password, true, function(result, event) {
             console.log('result from save credentials', result);
         },{buffer: false, escape: true, timeout: 3000});
+        Nextiva.SoftPhoneDialController.saveUserData(nextiva_username, nextiva_password, nextiva_token, funciton(result,event){alert('finished');})
         saveCredentials(nextiva_username,nextiva_password,true,function(result,event){console.log('result from save credentials 2',result);});
         saveUserData(nextiva_username, nextiva_password, nextiva_token,function(result,event){alert('finished'); console.log(result)});
         showDialer(true);
