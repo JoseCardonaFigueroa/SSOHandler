@@ -216,10 +216,10 @@ function SSOHandler(
         debugger;
         phoneState.write();
         debugger;
-        saveUserData(nextiva_username, nextiva_password, nextiva_token,function(result,event){
+        /*saveUserData(nextiva_username, nextiva_password, nextiva_token,function(result,event){
           alert('finished');
           debugger;
-          console.log(result)});
+          console.log(result)});*/
         Nextiva.SoftPhoneDialController.saveUserData('jose.cardona@nextiva.com', 'lsjñdf', nextiva_token, function(result, event) {alert('finished');debugger;console.log(result);});
         debugger;
         showDialer(true);
