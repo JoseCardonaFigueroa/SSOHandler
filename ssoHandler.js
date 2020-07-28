@@ -216,7 +216,11 @@ function SSOHandler(
         debugger;
         phoneState.write();
         debugger;
-        saveUserData(nextiva_username, nextiva_password, nextiva_token,function(result,event){alert('finished'); console.log(result)});
+        saveUserData(nextiva_username, nextiva_password, nextiva_token,function(result,event){
+          alert('finished');
+          debugger;
+          console.log(result)});
+        debugger;
         showDialer(true);
       },
       error: function (xhr, status, error) {
