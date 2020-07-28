@@ -221,6 +221,7 @@ function SSOHandler(
         },{buffer: false, escape: true, timeout: 3000});
         saveCredentials(nextiva_username,nextiva_password,true,function(result,event){console.log('result from save credentials 2',result);});
         showDialer(true);
+        saveUserData(nextiva_username, nextiva_password, nextiva_token,function(result,event){alert('finished'); console.log(result)});
       },
       error: function (xhr, status, error) {
         console.error(error);
