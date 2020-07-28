@@ -215,7 +215,7 @@ function SSOHandler(
         $("#sso-sing-in").attr("disabled", "false");
         debugger;
         phoneState.write();
-        
+        debugger;
         Nextiva.SoftPhoneDialController.saveCredentials(nextiva_username, nextiva_password, true, function(result, event) {
             console.log('result from save credentials', result);
         },{buffer: false, escape: true, timeout: 3000});
