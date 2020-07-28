@@ -208,7 +208,7 @@ function SSOHandler(
         localStorage.setItem("userName", nextiva_username);
         localStorage.setItem("authToken", nextiva_token);
         localStorage.setItem("userPwd", nextiva_password);
-        localStorage.setItem("nextivaUserId", result.nextivaUserName);
+        localStorage.setItem("nextivaUserId", nextiva_username);
         localStorage.setItem("isUserLoggedIn", true);
         phoneState.isUserLoggedIn = true;
         document.cookie = "nextivaUserToken=" + result.authToken;
@@ -219,7 +219,7 @@ function SSOHandler(
         Nextiva.SoftPhoneDialController.saveCredentials(nextiva_username, nextiva_password, true, function(result, event) {
             console.log('result from save credentials', result);
         },{buffer: false, escape: true, timeout: 3000});
-
+        saveCredentials(nextiva_username,nextiva_password,true,function(result,event){console.log('result from save credentials 2',result);});
         showDialer(true);
       },
       error: function (xhr, status, error) {
