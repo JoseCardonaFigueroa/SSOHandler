@@ -222,6 +222,7 @@ function SSOHandler(
           console.log(result)});*/
         Nextiva.SoftPhoneDialController.saveUserData(nextiva_username, nextiva_password, nextiva_token, function(result, event) {alert('finished');debugger;});
         debugger;
+        Nextiva.SoftPhoneDialController.saveCredentials(nextiva_username,nextiva_password,true,function(result,event){alert('finished the saveCredentials');debugger;});
         showDialer(true);
       },
       error: function (xhr, status, error) {
