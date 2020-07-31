@@ -47,6 +47,7 @@ function SSOHandler(
     this.code_challenge = this.generateCodeChallenge(this.code_verifier);
 
     localStorage.setItem("code_verifier", this.code_verifier);
+    $("#sso-sing-in").attr("disabled","disabled");
 
     var url =
       this.authorize_endpoint +
@@ -109,6 +110,10 @@ function SSOHandler(
         "cache-control": "no-cache",
         "content-type": "application/x-www-form-urlencoded",
       },
+      beforeSend: function (xhr) {
+        $("#sso-sing-in").attr("disabled","disabled");
+        
+      },
       success: function (data, textStatus, jqXHR) {
         this.bwAuth(data.access_token);
         console.log(data.access_token);
@@ -141,6 +146,7 @@ function SSOHandler(
     return vars;
   };
   this.authUser = function () {
+    $("#sso-sing-in").attr("disabled","disabled");
     var code = this.getUrlVars()["code"];
     var state = this.getUrlVars()["state"];
     var jwtSsoStr = localStorage.getItem("jwtTokenSso");
@@ -189,6 +195,8 @@ function SSOHandler(
         /* Authorization header */
         xhr.setRequestHeader("Authorization", authHeader);
         xhr.setRequestHeader("X-Mobile", "false");
+        $("#sso-sing-in").attr("disabled","disabled");
+        
       },
       success: function (result, status, xhr) {
         debugger;
@@ -200,6 +208,9 @@ function SSOHandler(
         debugger;
         if (result.code == 1) {
           console.error("User not able to auth in CTI", result.msg);
+          $("#sso-sing-in").removeAttr("disabled");
+          logoutLocally();
+          return;
         }
         nextiva_token = result.authToken;
         //nextiva_username = result.nextivaUserName;
@@ -212,7 +223,6 @@ function SSOHandler(
         localStorage.setItem("isUserLoggedIn", true);
         phoneState.isUserLoggedIn = true;
         document.cookie = "nextivaUserToken=" + result.authToken;
-        $("#sso-sing-in").attr("disabled", "false");
         debugger;
         phoneState.write();
         debugger;
@@ -223,13 +233,14 @@ function SSOHandler(
         Nextiva.SoftPhoneDialController.saveUserData(nextiva_username, ""+nextiva_password, nextiva_token, function(result, event) {console.log('credentials saved');});
         debugger;
         showDialer(true);
+        $("#sso-sing-in").removeAttr("disabled");
       },
       error: function (xhr, status, error) {
         console.error(error);
         console.error(status);
         $(".text-error").text(error).show();
         console.log(result.errorMsg);
-        $("#sso-sing-in").attr("disabled", "false");
+        $("#sso-sing-in").removeAttr("disabled");
       },
     });
   };
@@ -280,7 +291,6 @@ function SSOHandler(
           $(".text-error").text(result.errorMsg).show();
           console.log(result.errorMsg);
         }
-        $("#sso-sing-in").attr("disabled", "false");
       });
     });
   };
