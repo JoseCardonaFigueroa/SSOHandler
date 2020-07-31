@@ -230,7 +230,7 @@ function SSOHandler(
           alert('finished');
           debugger;
           console.log(result)});*/
-        Nextiva.SoftPhoneDialController.saveUserData(nextiva_username, ""+nextiva_password, nextiva_token, function(result, event) {console.log('credentials saved');});
+        //Nextiva.SoftPhoneDialController.saveUserData(nextiva_username, ""+nextiva_password, nextiva_token, function(result, event) {console.log('credentials saved');});
         debugger;
         showDialer(true);
         $("#sso-sign-in").removeAttr("disabled");
