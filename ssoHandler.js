@@ -115,7 +115,6 @@ function SSOHandler(
         
       },
       success: function (data, textStatus, jqXHR) {
-        $("#sso-sign-in").attr("disabled","disabled");
         this.bwAuth(data.access_token);
         console.log(data.access_token);
       },
@@ -163,7 +162,6 @@ function SSOHandler(
       debugger;
       this.submit();
     } else if (jwtSso == "" || jwtSso == undefined) {
-      $("#sso-sign-in").attr("disabled","disabled");
       this.getToken(code);
     }
     //},5000);
