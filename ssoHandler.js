@@ -47,7 +47,7 @@ function SSOHandler(
     this.code_challenge = this.generateCodeChallenge(this.code_verifier);
 
     localStorage.setItem("code_verifier", this.code_verifier);
-    $("#sso-sing-in").attr("disabled","disabled");
+    $("#sso-sign-in").attr("disabled","disabled");
 
     var url =
       this.authorize_endpoint +
@@ -111,7 +111,7 @@ function SSOHandler(
         "content-type": "application/x-www-form-urlencoded",
       },
       beforeSend: function (xhr) {
-        $("#sso-sing-in").attr("disabled","disabled");
+        $("#sso-sign-in").attr("disabled","disabled");
         
       },
       success: function (data, textStatus, jqXHR) {
@@ -146,7 +146,7 @@ function SSOHandler(
     return vars;
   };
   this.authUser = function () {
-    $("#sso-sing-in").attr("disabled","disabled");
+    $("#sso-sign-in").attr("disabled","disabled");
     var code = this.getUrlVars()["code"];
     var state = this.getUrlVars()["state"];
     var jwtSsoStr = localStorage.getItem("jwtTokenSso");
@@ -195,7 +195,7 @@ function SSOHandler(
         /* Authorization header */
         xhr.setRequestHeader("Authorization", authHeader);
         xhr.setRequestHeader("X-Mobile", "false");
-        $("#sso-sing-in").attr("disabled","disabled");
+        $("#sso-sign-in").attr("disabled","disabled");
         
       },
       success: function (result, status, xhr) {
@@ -208,7 +208,7 @@ function SSOHandler(
         debugger;
         if (result.code == 1) {
           console.error("User not able to auth in CTI", result.msg);
-          $("#sso-sing-in").removeAttr("disabled");
+          $("#sso-sign-in").removeAttr("disabled");
           logoutLocally();
           return;
         }
@@ -233,14 +233,14 @@ function SSOHandler(
         Nextiva.SoftPhoneDialController.saveUserData(nextiva_username, ""+nextiva_password, nextiva_token, function(result, event) {console.log('credentials saved');});
         debugger;
         showDialer(true);
-        $("#sso-sing-in").removeAttr("disabled");
+        $("#sso-sign-in").removeAttr("disabled");
       },
       error: function (xhr, status, error) {
         console.error(error);
         console.error(status);
         $(".text-error").text(error).show();
         console.log(result.errorMsg);
-        $("#sso-sing-in").removeAttr("disabled");
+        $("#sso-sign-in").removeAttr("disabled");
       },
     });
   };
